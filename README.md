@@ -14,8 +14,8 @@ extension'ı (Manifest V3, TypeScript + Vite). Zamanla farklı platformlar ve
 ### YouTube — Dislike sayısını gösterme
 - Video sayfalarında (`/watch`) ve Shorts'ta (`/shorts/...`) YouTube'un
   arayüzden kaldırdığı **dislike sayısını** dislike butonunun yanında gösterir.
-- Sayı, [returnyoutubedislikeapi.com](https://returnyoutubedislikeapi.com)
-  API'sinden alınır (bkz. [Anarios/return-youtube-dislike](https://github.com/Anarios/return-youtube-dislike)).
+- Sayı, [returnyoutubedislike.com](https://returnyoutubedislike.com)
+  servisinden alınır (bkz. [Anarios/return-youtube-dislike](https://github.com/Anarios/return-youtube-dislike)).
 - Popup üzerinden **aç/kapa** edilebilir.
 
 ### Instagram Reels — Otomatik geçiş
