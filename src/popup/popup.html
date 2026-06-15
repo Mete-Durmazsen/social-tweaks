@@ -3,27 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shorts Otomatik Geçiş</title>
+    <title>Social Tweaks</title>
     <link rel="stylesheet" href="./popup.css" />
   </head>
   <body>
     <header>
-      <h1>Shorts Otomatik Geçiş</h1>
+      <h1>Social Tweaks</h1>
     </header>
 
     <main>
-      <label class="row switch-row" for="enabled">
-        <span>Otomatik geçiş</span>
-        <span class="switch">
-          <input type="checkbox" id="enabled" />
-          <span class="slider"></span>
-        </span>
-      </label>
+      <section>
+        <h2>YouTube Shorts</h2>
 
-      <label class="row" for="delay">
-        <span>Geçiş öncesi bekleme (sn)</span>
-        <input type="number" id="delay" min="0" max="30" step="0.5" />
-      </label>
+        <label class="row switch-row" for="enabled">
+          <span>Otomatik geçiş</span>
+          <span class="switch">
+            <input type="checkbox" id="enabled" />
+            <span class="slider"></span>
+          </span>
+        </label>
+
+        <label class="row" for="delay">
+          <span>Geçiş öncesi bekleme (sn)</span>
+          <input type="number" id="delay" min="0" max="30" step="0.5" />
+        </label>
+      </section>
 
       <p class="hint">
         Ayarlar otomatik kaydedilir. Açık bir Shorts sayfasını yenilemen

@@ -1,7 +1,7 @@
 {
-  "name": "youtube-shorts-auto-scroll",
+  "name": "social-tweaks",
   "version": "1.0.0",
-  "description": "Bir YouTube Short bittiğinde otomatik olarak bir sonrakine geçen Chrome extension'ı.",
+  "description": "Sosyal medya deneyimini iyileştiren küçük ayarlar bütünü (Chrome extension). İlk özellik: YouTube Shorts otomatik geçiş.",
   "type": "module",
   "scripts": {
     "dev": "vite",

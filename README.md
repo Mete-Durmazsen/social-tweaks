@@ -1,13 +1,20 @@
-# YouTube Shorts Otomatik Geçiş
+# Social Tweaks
 
-Bir YouTube Short bittiğinde otomatik olarak bir sonraki short'a geçen Chrome
-extension'ı (Manifest V3, TypeScript + Vite).
+Sosyal medya deneyimini iyileştiren küçük ayarlar bütünü — tek bir Chrome
+extension'ı (Manifest V3, TypeScript + Vite). Zamanla farklı platformlar ve
+özellikler eklenecek şekilde tasarlandı.
 
 ## Özellikler
 
+### YouTube Shorts — Otomatik geçiş
 - Short bitince otomatik olarak sonrakine geçer.
 - Popup üzerinden **aç/kapa** ve **geçiş öncesi bekleme süresi** (saniye) ayarı.
 - Ayarlar `chrome.storage.sync` ile kaydedilir ve anında uygulanır.
+
+### Planlanan
+- YouTube'da gizlenen **dislike sayısını gösterme**.
+- Instagram Reels için otomatik geçiş.
+- (öneriler memnuniyetle karşılanır)
 
 ## Nasıl çalışır?
 

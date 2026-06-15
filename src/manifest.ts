@@ -2,15 +2,15 @@ import { defineManifest } from '@crxjs/vite-plugin';
 
 export default defineManifest({
   manifest_version: 3,
-  name: 'YouTube Shorts Otomatik Geçiş',
+  name: 'Social Tweaks',
   description:
-    'Bir YouTube Short bittiğinde otomatik olarak bir sonrakine geçer.',
+    'Sosyal medya için küçük iyileştirmeler. İlk özellik: YouTube Shorts bittiğinde otomatik olarak bir sonrakine geçer.',
   version: '1.0.0',
   permissions: ['storage'],
   host_permissions: ['https://www.youtube.com/*'],
   action: {
     default_popup: 'src/popup/popup.html',
-    default_title: 'Shorts Otomatik Geçiş',
+    default_title: 'Social Tweaks',
     default_icon: {
       '16': 'src/icons/icon16.png',
       '48': 'src/icons/icon48.png',
