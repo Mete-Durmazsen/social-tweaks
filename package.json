@@ -1,0 +1,17 @@
+{
+  "name": "youtube-shorts-auto-scroll",
+  "version": "1.0.0",
+  "description": "Bir YouTube Short bittiğinde otomatik olarak bir sonrakine geçen Chrome extension'ı.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.0.0",
+    "@types/chrome": "^0.0.268",
+    "typescript": "^5.4.5",
+    "vite": "^6.4.3"
+  }
+}

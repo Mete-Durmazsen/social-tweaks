@@ -1,0 +1,32 @@
+import { defineManifest } from '@crxjs/vite-plugin';
+
+export default defineManifest({
+  manifest_version: 3,
+  name: 'YouTube Shorts Otomatik Geçiş',
+  description:
+    'Bir YouTube Short bittiğinde otomatik olarak bir sonrakine geçer.',
+  version: '1.0.0',
+  permissions: ['storage'],
+  host_permissions: ['https://www.youtube.com/*'],
+  action: {
+    default_popup: 'src/popup/popup.html',
+    default_title: 'Shorts Otomatik Geçiş',
+    default_icon: {
+      '16': 'src/icons/icon16.png',
+      '48': 'src/icons/icon48.png',
+      '128': 'src/icons/icon128.png',
+    },
+  },
+  icons: {
+    '16': 'src/icons/icon16.png',
+    '48': 'src/icons/icon48.png',
+    '128': 'src/icons/icon128.png',
+  },
+  content_scripts: [
+    {
+      matches: ['https://www.youtube.com/shorts/*'],
+      js: ['src/content.ts'],
+      run_at: 'document_idle',
+    },
+  ],
+});
