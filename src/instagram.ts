@@ -1,15 +1,13 @@
 import { DEFAULT_SETTINGS, getSettings, onSettingsChanged, type Settings } from './settings';
 
 /**
- * YouTube Shorts otomatik geçiş içerik scripti.
+ * Instagram Reels otomatik geçiş içerik scripti.
  *
- * Sorun: Shorts videoları `video.loop = true` ile sonsuz döner; bu yüzden
- * normal `ended` olayı tetiklenmez. Çözüm iki katmanlı:
- *   1. Aktif video bulunup `loop = false` yapılır ve `ended` dinlenir.
- *   2. Yedek olarak `timeupdate` ile videonun sonuna gelinip gelinmediği izlenir
- *      (YouTube `loop`'u yeniden açarsa diye).
- * Geçiş, YouTube'un dinlediği `ArrowDown` klavye olayıyla; o işe yaramazsa
- * aşağı yön navigasyon butonuna tıklanarak yapılır.
+ * YouTube Shorts'taki gibi Reels videoları da `loop` ile sonsuz döner; bu
+ * yüzden `loop` kapatılıp `ended` ve `timeupdate` ile video sonu yakalanır.
+ * Geçiş, Reels'in dinlediği `ArrowDown` klavye olayıyla; o işe yaramazsa
+ * videoyu içeren kaydırılabilir alanın bir ekran yüksekliği kaydırılmasıyla
+ * yapılır.
  */
 
 // --- Sabitler -------------------------------------------------------------
@@ -23,14 +21,6 @@ const ADVANCE_LOCK_MS = 1200;
 /** Aktif video'yu yoklama aralığı (ms). */
 const POLL_INTERVAL_MS = 500;
 
-/** Aşağı yön navigasyon butonu için dayanıklılık amaçlı yedek seçiciler. */
-const NEXT_BUTTON_SELECTORS = [
-  '#navigation-button-down button',
-  'ytd-shorts #navigation-button-down button',
-  'button[aria-label="Next video"]',
-  'button[aria-label="Sonraki video"]',
-];
-
 // --- Durum ----------------------------------------------------------------
 
 let settings: Settings = DEFAULT_SETTINGS;
@@ -39,9 +29,37 @@ let lastAdvanceAt = 0;
 /** Handler'ı zaten bağlanmış video öğelerini izler (çift bağlamayı önler). */
 const handledVideos = new WeakSet<HTMLVideoElement>();
 
+// --- Video tespiti ----------------------------------------------------------
+
+/** Elemanın görünür alanın yarısından fazlasının ekranda olup olmadığı. */
+function isMostlyInViewport(el: Element): boolean {
+  const rect = el.getBoundingClientRect();
+  if (rect.height === 0) return false;
+  const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+  return visibleHeight / rect.height > 0.5;
+}
+
+/** O an ekranda görünen Reel video öğesini döndürür. */
+function findActiveVideo(): HTMLVideoElement | null {
+  const videos = Array.from(document.querySelectorAll<HTMLVideoElement>('video'));
+  return videos.find((v) => v.duration > 0 && isMostlyInViewport(v)) ?? null;
+}
+
 // --- Geçiş mantığı --------------------------------------------------------
 
-function goToNextShort(): void {
+/** Videoyu içeren en yakın dikey kaydırılabilir elemanı bulur. */
+function findScrollableAncestor(el: Element): Element | null {
+  let node: Element | null = el;
+  while (node && node !== document.body) {
+    const style = getComputedStyle(node);
+    const canScroll = style.overflowY === 'auto' || style.overflowY === 'scroll';
+    if (canScroll && node.scrollHeight > node.clientHeight + 1) return node;
+    node = node.parentElement;
+  }
+  return null;
+}
+
+function goToNextReel(video: HTMLVideoElement): void {
   // 1) Tercih edilen yöntem: ArrowDown klavye olayı.
   const dispatchArrowDown = (type: 'keydown' | 'keyup') => {
     const event = new KeyboardEvent(type, {
@@ -52,62 +70,38 @@ function goToNextShort(): void {
       bubbles: true,
       cancelable: true,
     });
-    document.documentElement.dispatchEvent(event);
+    document.dispatchEvent(event);
   };
   dispatchArrowDown('keydown');
   dispatchArrowDown('keyup');
 
-  // 2) Yedek: aşağı yön navigasyon butonuna tıkla.
-  for (const selector of NEXT_BUTTON_SELECTORS) {
-    const button = document.querySelector<HTMLButtonElement>(selector);
-    if (button) {
-      button.click();
-      break;
-    }
-  }
+  // 2) Yedek: videoyu içeren kaydırılabilir alanı bir ekran yüksekliği kaydır.
+  const scrollable = findScrollableAncestor(video) ?? document.scrollingElement;
+  scrollable?.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
 }
 
 /** Geçişi tetikler; kilitliyse yok sayar. */
-function requestAdvance(): void {
-  if (!settings.enabled) return;
+function requestAdvance(video: HTMLVideoElement): void {
+  if (!settings.instagramEnabled) return;
 
   const now = Date.now();
   if (now - lastAdvanceAt < ADVANCE_LOCK_MS) return;
   lastAdvanceAt = now;
 
-  goToNextShort();
+  goToNextReel(video);
 }
 
-// --- Video tespiti & olay bağlama ----------------------------------------
-
-/** O an oynayan/aktif Shorts video öğesini döndürür. */
-function findActiveVideo(): HTMLVideoElement | null {
-  // Aktif reel renderer içindeki video en güvenilir göstergedir.
-  const active = document.querySelector<HTMLVideoElement>(
-    'ytd-reel-video-renderer[is-active] video',
-  );
-  if (active) return active;
-
-  // Yedek: oynayan (duraklatılmamış, süresi olan) ilk video.
-  const videos = Array.from(document.querySelectorAll<HTMLVideoElement>('video'));
-  return videos.find((v) => !v.paused && v.duration > 0) ?? videos[0] ?? null;
-}
+// --- Olay bağlama -----------------------------------------------------------
 
 function handleEnded(event: Event): void {
-  const video = event.target as HTMLVideoElement;
-  // Video tekrar başa sarmasın diye loop'u kapalı tutmaya çalışıyoruz,
-  // ancak ended sonrası YouTube'un başa sarmasını da engelleyelim.
-  if (video.currentTime < END_THRESHOLD) {
-    // (loop kaynaklı sahte ended olabilir) yine de geçiş isteyelim.
-  }
-  requestAdvance();
+  requestAdvance(event.target as HTMLVideoElement);
 }
 
 function handleTimeUpdate(event: Event): void {
   const video = event.target as HTMLVideoElement;
   if (!video.duration || Number.isNaN(video.duration)) return;
   if (video.duration - video.currentTime <= END_THRESHOLD) {
-    requestAdvance();
+    requestAdvance(video);
   }
 }
 
@@ -123,10 +117,10 @@ function attachToVideo(video: HTMLVideoElement): void {
 
 /** Periyodik denetleyici: aktif video'ya handler'ların bağlı olmasını sağlar. */
 function tick(): void {
-  if (!settings.enabled) return;
+  if (!settings.instagramEnabled) return;
   const video = findActiveVideo();
   if (video) {
-    // YouTube loop'u yeniden açabilir; her turda tekrar kapat.
+    // Instagram loop'u yeniden açabilir; her turda tekrar kapat.
     video.loop = false;
     attachToVideo(video);
   }

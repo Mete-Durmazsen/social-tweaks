@@ -1,13 +1,16 @@
 export interface Settings {
-  /** Otomatik geçiş açık mı? */
+  /** YouTube Shorts'ta otomatik geçiş açık mı? */
   enabled: boolean;
-  /** Short bittikten sonra geçişten önce beklenecek saniye. */
-  delaySeconds: number;
+  /** Video sayfalarında gizlenen dislike sayısı gösterilsin mi? */
+  showDislikes: boolean;
+  /** Instagram Reels'te otomatik geçiş açık mı? */
+  instagramEnabled: boolean;
 }
 
 export const DEFAULT_SETTINGS: Settings = {
   enabled: true,
-  delaySeconds: 0,
+  showDislikes: true,
+  instagramEnabled: true,
 };
 
 const STORAGE_KEY = 'settings';
