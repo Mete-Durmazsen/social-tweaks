@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gizlilik Politikası — Social Tweaks</title>
+    <meta
+      name="description"
+      content="Social Tweaks Chrome eklentisinin gizlilik politikası: hangi verilere erişiyor, neden ve verilerinle ne yapıyor."
+    />
+    <link rel="icon" href="./assets/logo.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #07070b;
+        --surface: #121219;
+        --surface-2: #16161f;
+        --border: rgba(255, 255, 255, 0.08);
+        --fg: #f5f5f8;
+        --muted: #a0a0b0;
+        --faint: #6b6b7a;
+        --brand-from: #3aa8e0;
+        --brand-to: #6a4fe8;
+        --maxw: 760px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background:
+          radial-gradient(680px 420px at 18% -8%, rgba(58, 168, 224, 0.14), transparent 60%),
+          radial-gradient(720px 480px at 90% 4%, rgba(106, 79, 232, 0.14), transparent 62%);
+        pointer-events: none;
+      }
+
+      a {
+        color: var(--brand-from);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .gradient-text {
+        background: linear-gradient(120deg, var(--brand-from), var(--brand-to));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      nav.top {
+        border-bottom: 1px solid var(--border);
+      }
+
+      nav.top .inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 18px 28px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        font-size: 16px;
+        color: var(--fg);
+      }
+
+      .logo img {
+        width: 28px;
+        height: 28px;
+        border-radius: 7px;
+      }
+
+      nav.top .back {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--muted);
+      }
+
+      main {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 56px 28px 80px;
+      }
+
+      .eyebrow {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--brand-from);
+        margin: 0 0 14px;
+      }
+
+      h1 {
+        font-size: 38px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        margin: 0 0 10px;
+      }
+
+      .updated {
+        color: var(--faint);
+        font-size: 14px;
+        margin: 0 0 40px;
+      }
+
+      .summary {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px 26px;
+        margin-bottom: 44px;
+      }
+
+      .summary h2 {
+        margin: 0 0 12px;
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      .summary ul {
+        margin: 0;
+        padding-left: 20px;
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .summary li + li {
+        margin-top: 6px;
+      }
+
+      h2.section {
+        font-size: 22px;
+        font-weight: 800;
+        letter-spacing: -0.3px;
+        margin: 48px 0 14px;
+      }
+
+      p,
+      li {
+        color: var(--muted);
+        font-size: 15.5px;
+      }
+
+      ul,
+      ol {
+        padding-left: 22px;
+      }
+
+      li + li {
+        margin-top: 6px;
+      }
+
+      code {
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 2px 6px;
+        font-size: 13.5px;
+        color: var(--fg);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 18px 0;
+        font-size: 14.5px;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 10px 12px;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        vertical-align: top;
+      }
+
+      th {
+        background: var(--surface);
+        color: var(--fg);
+        font-weight: 700;
+      }
+
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 28px;
+        text-align: center;
+        color: var(--faint);
+        font-size: 13.5px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="top">
+      <div class="inner">
+        <a class="logo" href="./index.html">
+          <img src="./assets/logo.png" alt="" />
+          Social&nbsp;Tweaks
+        </a>
+        <a class="back" href="./index.html">← Ana sayfa</a>
+      </div>
+    </nav>
+
+    <main>
+      <div class="eyebrow">Gizlilik Politikası</div>
+      <h1>Verilerin <span class="gradient-text">sende kalır.</span></h1>
+      <p class="updated">Son güncelleme: 16 Haziran 2026</p>
+
+      <div class="summary">
+        <h2>Kısaca</h2>
+        <ul>
+          <li>Social Tweaks hiçbir kişisel veri toplamaz, saklamaz veya satmaz.</li>
+          <li>Kendi sunucusu yoktur; analitik, reklam veya takip SDK'sı içermez.</li>
+          <li>Tüm ayarlar yalnızca tarayıcının kendi <code>chrome.storage.sync</code> alanında tutulur.</li>
+          <li>
+            Yalnızca <strong>"Dislike sayısını göster"</strong> özelliği açıkken, görüntülediğin
+            videonun ID'si sayıyı almak için <code>returnyoutubedislikeapi.com</code>'a gider.
+            Bu özelliği kapatırsan hiçbir istek yapılmaz.
+          </li>
+        </ul>
+      </div>
+
+      <p>
+        Social Tweaks ("eklenti"), YouTube Shorts ve Instagram Reels'te otomatik geçiş ve
+        YouTube'un arayüzden kaldırdığı dislike sayılarının gösterilmesini sağlayan, açık
+        kaynaklı bir Chrome eklentisidir. Bu sayfa; eklentinin hangi verilere eriştiğini, bu
+        verilerle ne yaptığını ve hangi tarayıcı izinlerini neden istediğini açıklar.
+      </p>
+
+      <h2 class="section">Topladığımız ve sakladığımız veriler</h2>
+      <p>
+        Social Tweaks; isim, e-posta, konum, tarama geçmişi, kimlik bilgisi gibi herhangi bir
+        kişisel veriyi toplamaz. Eklentinin tuttuğu tek bilgi, popup üzerinden değiştirdiğin
+        ayar değerleridir:
+      </p>
+      <ul>
+        <li><code>enabled</code> — YouTube Shorts'ta otomatik geçiş açık/kapalı</li>
+        <li><code>showDislikes</code> — Dislike sayısı gösterimi açık/kapalı</li>
+        <li><code>instagramEnabled</code> — Instagram Reels'te otomatik geçiş açık/kapalı</li>
+      </ul>
+      <p>
+        Bu değerler yalnızca tarayıcının kendi <code>chrome.storage.sync</code> alanında
+        saklanır ve Chrome hesabın açıksa Google'ın kendi senkronizasyon mekanizmasıyla diğer
+        cihazlarına aktarılabilir. Social Tweaks'in kendi bir sunucusu yoktur ve bu verilere
+        hiçbir şekilde erişemez.
+      </p>
+
+      <h2 class="section">Üçüncü taraf servis: returnyoutubedislikeapi.com</h2>
+      <p>
+        <strong>"Dislike sayısını göster"</strong> ayarı açıkken, izlediğin YouTube videosunun
+        ID'si — yalnızca o videonun dislike sayısını almak için —
+        <a href="https://returnyoutubedislikeapi.com" target="_blank" rel="noopener">returnyoutubedislikeapi.com</a>
+        adresine gönderilir. Bu istek, sayfanın güvenlik politikaları nedeniyle eklentinin arka
+        plan servis çalışanından (background service worker) yapılır. Bu özelliği popup'tan
+        kapatırsan, bu isteklerden hiçbiri gönderilmez.
+      </p>
+      <p>
+        Bu servis, açık kaynaklı
+        <a href="https://github.com/Anarios/return-youtube-dislike" target="_blank" rel="noopener">Anarios/return-youtube-dislike</a>
+        projesi tarafından işletilir ve Social Tweaks ile bir bağlantısı yoktur.
+      </p>
+
+      <h2 class="section">İzinler ve neden gerekli oldukları</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>İzin</th>
+            <th>Neden gerekli</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>storage</code></td>
+            <td>Yukarıdaki üç ayarı kaydetmek ve popup açıldığında geri okumak için.</td>
+          </tr>
+          <tr>
+            <td><code>https://www.youtube.com/*</code></td>
+            <td>
+              Shorts sayfalarında otomatik geçişi sağlamak ve video/Shorts sayfalarında dislike
+              sayısını göstermek için gereken içerik scriptlerini çalıştırmak.
+            </td>
+          </tr>
+          <tr>
+            <td><code>https://www.instagram.com/*</code></td>
+            <td>Reels sayfalarında otomatik geçişi sağlayan içerik scriptini çalıştırmak.</td>
+          </tr>
+          <tr>
+            <td><code>https://returnyoutubedislikeapi.com/*</code></td>
+            <td>
+              "Dislike sayısını göster" açıkken, görüntülenen videonun dislike sayısını almak
+              için.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        Social Tweaks, paket içinde yüklenenin dışında uzaktan kod indirip çalıştırmaz
+        (remote code kullanmaz).
+      </p>
+
+      <h2 class="section">Reklam, analitik ve takip</h2>
+      <p>
+        Yok. Eklenti hiçbir üçüncü taraf analiz (Google Analytics vb.), reklam ağı veya
+        kullanıcı takip SDK'sı içermez.
+      </p>
+
+      <h2 class="section">Veri paylaşımı ve satışı</h2>
+      <p>
+        Social Tweaks hiçbir veriyi üçüncü taraflarla paylaşmaz, satmaz veya kiralamaz —
+        yukarıda açıklanan, yalnızca isteğe bağlı özellik için gönderilen video ID'si dışında.
+      </p>
+
+      <h2 class="section">Çocukların gizliliği</h2>
+      <p>
+        Eklenti yaş veya kimlik bilgisi toplamaz ve özellikle çocuklara yönelik olarak
+        tasarlanmamıştır.
+      </p>
+
+      <h2 class="section">Açık kaynak</h2>
+      <p>
+        Tüm kaynak kodu herkese açıktır:
+        <a href="https://github.com/Mete-Durmazsen/social-tweaks" target="_blank" rel="noopener">github.com/Mete-Durmazsen/social-tweaks</a>
+        — dilersen eklentinin tüm davranışını satır satır inceleyebilirsin.
+      </p>
+
+      <h2 class="section">Bu politikadaki değişiklikler</h2>
+      <p>
+        Bu politika güncellenirse değişiklikler bu sayfada yayınlanır ve yukarıdaki "son
+        güncelleme" tarihi değişir.
+      </p>
+
+      <h2 class="section">İletişim</h2>
+      <p>
+        Sorularınız için: <a href="mailto:mete.durmazsen@gmail.com">mete.durmazsen@gmail.com</a>
+      </p>
+    </main>
+
+    <footer>Social Tweaks · MIT Lisansı</footer>
+  </body>
+</html>
