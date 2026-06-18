@@ -3,8 +3,8 @@ import { defineManifest } from '@crxjs/vite-plugin';
 export default defineManifest({
   manifest_version: 3,
   name: 'Social Tweaks',
-  description:
-    'Sosyal medya için küçük iyileştirmeler: YouTube Shorts ve Instagram Reels bittiğinde otomatik olarak bir sonrakine geçer.',
+  description: '__MSG_appDesc__',
+  default_locale: 'en',
   version: '1.0.0',
   permissions: ['storage'],
   host_permissions: ['https://www.youtube.com/*', 'https://returnyoutubedislikeapi.com/*'],
