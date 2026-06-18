@@ -5,7 +5,7 @@ export default defineManifest({
   name: 'Social Tweaks',
   description: '__MSG_appDesc__',
   default_locale: 'en',
-  version: '1.0.0',
+  version: '1.1.0',
   permissions: ['storage'],
   host_permissions: ['https://www.youtube.com/*', 'https://returnyoutubedislikeapi.com/*'],
   background: {
