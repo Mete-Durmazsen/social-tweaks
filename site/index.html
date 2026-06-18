@@ -9,6 +9,9 @@
       content="YouTube Shorts ve Instagram Reels'i eller serbest izle. Üstüne YouTube'un gizlediği dislike sayılarını geri getir. Açık kaynak, hafif ve hiçbir veri toplamayan bir Chrome eklentisi."
     />
     <link rel="canonical" href="https://socialtweaks.online/" />
+    <link rel="alternate" hreflang="tr" href="https://socialtweaks.online/" />
+    <link rel="alternate" hreflang="en" href="https://socialtweaks.online/en/" />
+    <link rel="alternate" hreflang="x-default" href="https://socialtweaks.online/" />
     <meta name="theme-color" content="#07070b" />
     <link rel="icon" href="./assets/logo.png" type="image/png" />
     <link rel="apple-touch-icon" href="./assets/logo.png" />
@@ -51,6 +54,48 @@
         "isAccessibleForFree": true,
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
         "author": { "@type": "Person", "name": "Mete Durmazşen" }
+      }
+    </script>
+
+    <!-- FAQ structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "YouTube Shorts otomatik geçiş nasıl yapılır?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Social Tweaks Chrome eklentisini kurup popup'tan \"Shorts'ta otomatik geçiş\" ayarını açman yeterli. Bir Short bittiğinde eklenti otomatik olarak bir sonraki Short'a geçer; elini sürmene gerek kalmaz."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "YouTube dislike sayısını geri getirmek mümkün mü?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Evet. Social Tweaks, Return YouTube Dislike verisini kullanarak YouTube'un 2021'de gizlediği dislike sayılarını video ve Shorts sayfalarında yeniden gösterir. \"Dislike sayısını göster\" ayarını açman yeterlidir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Instagram Reels otomatik kaydırma yapılabilir mi?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Evet. Social Tweaks açıkken bir Reel bittiğinde sıradaki Reel otomatik olarak gelir, akış durmaz. Bu özelliği popup'tan ayrı olarak açıp kapatabilirsin."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Social Tweaks ücretsiz mi ve veri topluyor mu?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tamamen ücretsiz ve açık kaynaktır. Hiçbir kişisel veri toplamaz, analitik veya takip içermez. Ayarların yalnızca tarayıcının kendi deposunda tutulur."
+            }
+          }
+        ]
       }
     </script>
 
@@ -818,6 +863,108 @@
         transform: none;
       }
 
+      /* ---------- Guides ---------- */
+      .guides {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+
+      .gcard {
+        display: block;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 26px 24px;
+        transition: transform 0.2s, border-color 0.2s;
+      }
+
+      .gcard:hover {
+        transform: translateY(-4px);
+        border-color: var(--border-strong);
+      }
+
+      .gcard .kicker {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--brand-from);
+        margin-bottom: 12px;
+      }
+
+      .gcard h3 {
+        font-size: 18px;
+        font-weight: 750;
+        letter-spacing: -0.015em;
+        margin: 0 0 9px;
+        color: var(--fg);
+      }
+
+      .gcard p {
+        color: var(--muted);
+        font-size: 14.5px;
+        margin: 0 0 14px;
+      }
+
+      .gcard .arrow {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--brand-from);
+      }
+
+      /* ---------- FAQ ---------- */
+      .faq {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .faq details {
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: var(--surface);
+        padding: 0 22px;
+        margin-bottom: 12px;
+      }
+
+      .faq summary {
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 20px 0;
+        font-size: 16.5px;
+        font-weight: 650;
+        color: var(--fg);
+      }
+
+      .faq summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq summary::after {
+        content: '+';
+        flex: 0 0 auto;
+        font-size: 22px;
+        font-weight: 400;
+        color: var(--brand-from);
+        transition: transform 0.2s;
+      }
+
+      .faq details[open] summary::after {
+        transform: rotate(45deg);
+      }
+
+      .faq details > p {
+        margin: 0;
+        padding: 0 0 22px;
+        color: var(--muted);
+        font-size: 15.5px;
+        line-height: 1.65;
+      }
+
       /* ---------- Responsive ---------- */
       @media (max-width: 900px) {
         .hero {
@@ -842,6 +989,10 @@
         }
 
         .features {
+          grid-template-columns: 1fr;
+        }
+
+        .guides {
           grid-template-columns: 1fr;
         }
 
@@ -876,7 +1027,9 @@
         <div class="nav-links">
           <a href="#ozellikler">Özellikler</a>
           <a href="#kurulum">Kurulum</a>
+          <a href="#sss">SSS</a>
           <a href="#gizlilik">Gizlilik</a>
+          <a href="/en/" hreflang="en" title="English">EN</a>
           <a class="nav-cta" href="https://chromewebstore.google.com/detail/efcmpoackpiboanhogobadabplpobkjj">Chrome'a ekle</a>
         </div>
       </div>
@@ -1077,6 +1230,95 @@
       </div>
     </section>
 
+    <!-- Guides -->
+    <section id="rehberler">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="sec-tag gradient-text">REHBERLER</div>
+          <h2>Nasıl yapılır?</h2>
+          <p>En çok merak edilen üç konuyu adım adım anlattık.</p>
+        </div>
+
+        <div class="guides reveal">
+          <a class="gcard" href="/rehber/youtube-shorts-otomatik-gecis/">
+            <div class="kicker">YouTube</div>
+            <h3>YouTube Shorts otomatik geçiş</h3>
+            <p>Shorts'u durmadan, elini sürmeden izlemek için otomatik geçişi nasıl açarsın?</p>
+            <span class="arrow">Rehberi oku →</span>
+          </a>
+          <a class="gcard" href="/rehber/youtube-dislike-geri-getirme/">
+            <div class="kicker">YouTube</div>
+            <h3>YouTube dislike geri getirme</h3>
+            <p>YouTube'un gizlediği dislike sayılarını video ve Shorts'ta nasıl yeniden görürsün?</p>
+            <span class="arrow">Rehberi oku →</span>
+          </a>
+          <a class="gcard" href="/rehber/instagram-reels-otomatik-kaydirma/">
+            <div class="kicker">Instagram</div>
+            <h3>Instagram Reels otomatik kaydırma</h3>
+            <p>Reels akışını kesintisiz, otomatik geçişle izlemenin en kolay yolu.</p>
+            <span class="arrow">Rehberi oku →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="sss">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div class="sec-tag gradient-text">SSS</div>
+          <h2>Sık sorulan sorular</h2>
+          <p>Aklına takılanların çoğunun cevabı burada.</p>
+        </div>
+
+        <div class="faq reveal">
+          <details>
+            <summary>YouTube Shorts otomatik geçiş nasıl yapılır?</summary>
+            <p>
+              Social Tweaks Chrome eklentisini kurup popup'tan "Shorts'ta otomatik geçiş"
+              ayarını açman yeterli. Bir Short bittiğinde eklenti otomatik olarak bir sonraki
+              Short'a geçer; elini sürmene gerek kalmaz. Ayrıntılı anlatım için
+              <a href="/rehber/youtube-shorts-otomatik-gecis/">Shorts otomatik geçiş rehberine</a>
+              bakabilirsin.
+            </p>
+          </details>
+          <details>
+            <summary>YouTube dislike sayısını geri getirmek mümkün mü?</summary>
+            <p>
+              Evet. Social Tweaks, Return YouTube Dislike verisini kullanarak YouTube'un 2021'de
+              gizlediği dislike sayılarını video ve Shorts sayfalarında yeniden gösterir.
+              "Dislike sayısını göster" ayarını açman yeterli — detaylar için
+              <a href="/rehber/youtube-dislike-geri-getirme/">dislike geri getirme rehberi</a>.
+            </p>
+          </details>
+          <details>
+            <summary>Instagram Reels otomatik kaydırma yapılabilir mi?</summary>
+            <p>
+              Evet. Social Tweaks açıkken bir Reel bittiğinde sıradaki Reel otomatik olarak
+              gelir, akış durmaz. Bu özelliği popup'tan ayrı olarak açıp kapatabilirsin.
+            </p>
+          </details>
+          <details>
+            <summary>Social Tweaks ücretsiz mi, veri topluyor mu?</summary>
+            <p>
+              Tamamen ücretsiz ve açık kaynaktır. Hiçbir kişisel veri toplamaz, analitik veya
+              takip içermez. Ayarların yalnızca tarayıcının kendi deposunda tutulur. İstersen
+              <a href="https://github.com/Mete-Durmazsen/social-tweaks">kaynak kodunu</a>
+              satır satır inceleyebilirsin.
+            </p>
+          </details>
+          <details>
+            <summary>Eklenti hesap veya giriş gerektiriyor mu?</summary>
+            <p>
+              Hayır. Kurduktan sonra herhangi bir hesap açmana, giriş yapmana veya izin vermene
+              gerek yok. Kur, popup'tan istediğin özellikleri aç, YouTube veya Instagram'ı aç —
+              gerisini Social Tweaks halleder.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <!-- Final CTA -->
     <section class="final-cta">
       <div class="wrap reveal">
@@ -1098,8 +1340,9 @@
         </a>
         <div class="f-links">
           <a href="https://github.com/Mete-Durmazsen/social-tweaks">GitHub</a>
-          <a href="#ozellikler">Özellikler</a>
+          <a href="#rehberler">Rehberler</a>
           <a href="./privacy.html">Gizlilik Politikası</a>
+          <a href="/en/" hreflang="en">English</a>
         </div>
         <span>MIT Lisansı · Made with care</span>
       </div>
