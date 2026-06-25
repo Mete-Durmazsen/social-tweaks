@@ -6,7 +6,7 @@
     <title>Social Tweaks — Kaydırmayı bırak, izlemeye devam et</title>
     <meta
       name="description"
-      content="YouTube Shorts ve Instagram Reels'i eller serbest izle. Üstüne YouTube'un gizlediği dislike sayılarını geri getir. Açık kaynak, hafif ve hiçbir veri toplamayan bir Chrome eklentisi."
+      content="YouTube Shorts ve Instagram Reels'i eller serbest izle, YouTube videolarını pop-out pencerede aç ve gizlenen dislike sayılarını geri getir. Açık kaynak, hafif Chrome eklentisi."
     />
     <link rel="canonical" href="https://socialtweaks.online/" />
     <link rel="alternate" hreflang="tr" href="https://socialtweaks.online/" />
@@ -23,7 +23,7 @@
     <meta property="og:title" content="Social Tweaks — Kaydırmayı bırak, izlemeye devam et" />
     <meta
       property="og:description"
-      content="YouTube Shorts ve Instagram Reels bittiğinde otomatik sonrakine geçer; YouTube'un gizlediği dislike sayılarını geri getirir. Açık kaynak, hafif, veri toplamayan Chrome eklentisi."
+      content="Shorts/Reels otomatik geçiş, YouTube video pop-out ve gizlenen dislike sayılarını geri getirme. Açık kaynak, hafif Chrome eklentisi."
     />
     <meta property="og:image" content="https://socialtweaks.online/assets/og.png" />
     <meta property="og:image:width" content="1200" />
@@ -35,7 +35,7 @@
     <meta name="twitter:title" content="Social Tweaks — Kaydırmayı bırak, izlemeye devam et" />
     <meta
       name="twitter:description"
-      content="YouTube Shorts ve Instagram Reels otomatik geçiş + dislike sayıları geri. Açık kaynak, veri toplamaz."
+      content="Shorts/Reels otomatik geçiş, YouTube video pop-out ve dislike sayıları geri. Açık kaynak, hafif Chrome eklentisi."
     />
     <meta name="twitter:image" content="https://socialtweaks.online/assets/og.png" />
 
@@ -47,9 +47,9 @@
         "name": "Social Tweaks",
         "applicationCategory": "BrowserApplication",
         "operatingSystem": "Chrome",
-        "description": "YouTube Shorts ve Instagram Reels bittiğinde otomatik olarak bir sonrakine geçen, YouTube'un gizlediği dislike sayılarını geri getiren açık kaynak Chrome eklentisi.",
+        "description": "YouTube Shorts ve Instagram Reels bittiğinde otomatik olarak bir sonrakine geçen, normal YouTube videolarını pop-out pencerede açan ve YouTube'un gizlediği dislike sayılarını geri getiren açık kaynak Chrome eklentisi.",
         "url": "https://socialtweaks.online/",
-        "softwareVersion": "1.0.0",
+        "softwareVersion": "1.2.0",
         "license": "https://opensource.org/licenses/MIT",
         "isAccessibleForFree": true,
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -77,6 +77,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Evet. Social Tweaks, Return YouTube Dislike verisini kullanarak YouTube'un 2021'de gizlediği dislike sayılarını video ve Shorts sayfalarında yeniden gösterir. \"Dislike sayısını göster\" ayarını açman yeterlidir."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "YouTube videosunu pop-out pencerede izleyebilir miyim?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Evet. Social Tweaks, normal YouTube video sayfalarında video alanına gelince görünen bir pop-out butonu ekler. Butona bastığında video Chrome'un native Picture-in-Picture penceresine geçer."
             }
           },
           {
@@ -527,7 +535,7 @@
       /* ---------- Features ---------- */
       .features {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 18px;
       }
 
@@ -577,6 +585,11 @@
         border: 1px solid rgba(224, 57, 94, 0.28);
       }
 
+      .ficon.popout {
+        background: rgba(58, 168, 224, 0.14);
+        border: 1px solid rgba(58, 168, 224, 0.28);
+      }
+
       .ficon svg {
         width: 24px;
         height: 24px;
@@ -588,6 +601,10 @@
 
       .ficon.ig svg {
         color: #f06292;
+      }
+
+      .ficon.popout svg {
+        color: var(--brand-from);
       }
 
       .fcard h3 {
@@ -866,7 +883,7 @@
       /* ---------- Guides ---------- */
       .guides {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 18px;
       }
 
@@ -1042,8 +1059,8 @@
         <h1>Kaydırmayı bırak,<br /><span class="gradient-text">izlemeye devam et.</span></h1>
         <p class="lead">
           Social Tweaks; YouTube Shorts ve Instagram Reels bittiğinde otomatik olarak
-          bir sonrakine geçer. Bir de YouTube'un gizlediği dislike sayılarını geri getirir.
-          Hepsi tek, hafif bir eklentide.
+          bir sonrakine geçer, normal videoları pop-out pencerede izletir ve YouTube'un
+          gizlediği dislike sayılarını geri getirir. Hepsi tek, hafif bir eklentide.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/efcmpoackpiboanhogobadabplpobkjj">
@@ -1098,6 +1115,10 @@
               <span>Dislike sayısını göster</span>
               <span class="toggle on"></span>
             </div>
+            <div class="prow">
+              <span>Video pop-out butonu</span>
+              <span class="toggle on"></span>
+            </div>
           </div>
 
           <div class="pcard">
@@ -1140,6 +1161,14 @@
             </span>
             <h3>Dislike'lar geri döndü</h3>
             <p>YouTube dislike sayılarını sakladı, biz geri getirdik. Bir videonun gerçekten ne kadar tutmadığını yine gör.</p>
+          </article>
+
+          <article class="fcard reveal" style="--accent: linear-gradient(90deg, #3aa8e0, #6a4fe8)">
+            <span class="ficon popout">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 5.5A2.5 2.5 0 016.5 3h11A2.5 2.5 0 0120 5.5v13a2.5 2.5 0 01-2.5 2.5h-11A2.5 2.5 0 014 18.5v-13zm2 0v13c0 .28.22.5.5.5h11a.5.5 0 00.5-.5v-13a.5.5 0 00-.5-.5h-11a.5.5 0 00-.5.5zm5 4.5h5v4h-5v-4z"/></svg>
+            </span>
+            <h3>Video pop-out</h3>
+            <p>Normal YouTube videosunu hover'da görünen butonla Chrome'un Picture-in-Picture penceresine taşı.</p>
           </article>
 
           <article class="fcard reveal" style="--accent: linear-gradient(90deg, #f5a623, #e0395e 55%, #8134af)">
@@ -1213,9 +1242,9 @@
           </span>
           <h2>Verilerin sende kalır</h2>
           <p>
-            Social Tweaks hiçbir sunucuya veri göndermez; analitik ya da takip içermez.
-            Ayarların yalnızca tarayıcının kendi deposunda durur. Yalnızca "dislike sayısını
-            göster" açıkken, izlediğin videonun ID'si sayıyı almak için
+            Social Tweaks eklentisi kendi sunucusuna veri göndermez; eklenti içinde analitik
+            ya da takip yoktur. Ayarların yalnızca tarayıcının kendi deposunda durur. Yalnızca
+            "dislike sayısını göster" açıkken, izlediğin videonun ID'si sayıyı almak için
             <a href="https://returnyoutubedislikeapi.com">returnyoutubedislikeapi.com</a>'a
             gider — o özelliği kapatırsan hiçbir istek yapılmaz.
           </p>
@@ -1236,7 +1265,7 @@
         <div class="sec-head reveal">
           <div class="sec-tag gradient-text">REHBERLER</div>
           <h2>Nasıl yapılır?</h2>
-          <p>En çok merak edilen üç konuyu adım adım anlattık.</p>
+          <p>En çok merak edilen konuları adım adım anlattık.</p>
         </div>
 
         <div class="guides reveal">
@@ -1250,6 +1279,12 @@
             <div class="kicker">YouTube</div>
             <h3>YouTube dislike geri getirme</h3>
             <p>YouTube'un gizlediği dislike sayılarını video ve Shorts'ta nasıl yeniden görürsün?</p>
+            <span class="arrow">Rehberi oku →</span>
+          </a>
+          <a class="gcard" href="/rehber/youtube-video-pop-out/">
+            <div class="kicker">YouTube</div>
+            <h3>YouTube video pop-out</h3>
+            <p>Normal YouTube videosunu küçük, üstte kalan PiP penceresinde nasıl izlersin?</p>
             <span class="arrow">Rehberi oku →</span>
           </a>
           <a class="gcard" href="/rehber/instagram-reels-otomatik-kaydirma/">
@@ -1289,6 +1324,16 @@
               gizlediği dislike sayılarını video ve Shorts sayfalarında yeniden gösterir.
               "Dislike sayısını göster" ayarını açman yeterli — detaylar için
               <a href="/rehber/youtube-dislike-geri-getirme/">dislike geri getirme rehberi</a>.
+            </p>
+          </details>
+          <details>
+            <summary>YouTube videosunu pop-out pencerede izleyebilir miyim?</summary>
+            <p>
+              Evet. Normal YouTube video sayfasında video alanına gelince Social Tweaks'in
+              pop-out butonu görünür. Butona bastığında mevcut video Chrome'un native
+              Picture-in-Picture penceresine taşınır. Detaylar için
+              <a href="/rehber/youtube-video-pop-out/">YouTube video pop-out rehberine</a>
+              bakabilirsin.
             </p>
           </details>
           <details>

@@ -1,6 +1,6 @@
 {
   "name": "social-tweaks",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Sosyal medya deneyimini iyileştiren küçük ayarlar bütünü (Chrome extension). İlk özellik: YouTube Shorts otomatik geçiş.",
   "type": "module",
   "scripts": {

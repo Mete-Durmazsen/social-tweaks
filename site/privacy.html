@@ -250,7 +250,7 @@
     <main>
       <div class="eyebrow">Gizlilik Politikası</div>
       <h1>Verilerin <span class="gradient-text">sende kalır.</span></h1>
-      <p class="updated">Son güncelleme: 16 Haziran 2026</p>
+      <p class="updated">Son güncelleme: 25 Haziran 2026</p>
 
       <div class="summary">
         <h2>Kısaca</h2>
@@ -267,10 +267,11 @@
       </div>
 
       <p>
-        Social Tweaks ("eklenti"), YouTube Shorts ve Instagram Reels'te otomatik geçiş ve
-        YouTube'un arayüzden kaldırdığı dislike sayılarının gösterilmesini sağlayan, açık
-        kaynaklı bir Chrome eklentisidir. Bu sayfa; eklentinin hangi verilere eriştiğini, bu
-        verilerle ne yaptığını ve hangi tarayıcı izinlerini neden istediğini açıklar.
+        Social Tweaks ("eklenti"), YouTube Shorts ve Instagram Reels'te otomatik geçiş,
+        normal YouTube videolarında pop-out butonu ve YouTube'un arayüzden kaldırdığı dislike
+        sayılarının gösterilmesini sağlayan, açık kaynaklı bir Chrome eklentisidir. Bu sayfa;
+        eklentinin hangi verilere eriştiğini, bu verilerle ne yaptığını ve hangi tarayıcı
+        izinlerini neden istediğini açıklar.
       </p>
 
       <h2 class="section">Topladığımız ve sakladığımız veriler</h2>
@@ -282,6 +283,7 @@
       <ul>
         <li><code>enabled</code> — YouTube Shorts'ta otomatik geçiş açık/kapalı</li>
         <li><code>showDislikes</code> — Dislike sayısı gösterimi açık/kapalı</li>
+        <li><code>youtubePopoutButtonEnabled</code> — YouTube video pop-out butonu açık/kapalı</li>
         <li><code>instagramEnabled</code> — Instagram Reels'te otomatik geçiş açık/kapalı</li>
       </ul>
       <p>
@@ -317,13 +319,14 @@
         <tbody>
           <tr>
             <td><code>storage</code></td>
-            <td>Yukarıdaki üç ayarı kaydetmek ve popup açıldığında geri okumak için.</td>
+            <td>Yukarıdaki ayarları kaydetmek ve popup açıldığında geri okumak için.</td>
           </tr>
           <tr>
             <td><code>https://www.youtube.com/*</code></td>
             <td>
-              Shorts sayfalarında otomatik geçişi sağlamak ve video/Shorts sayfalarında dislike
-              sayısını göstermek için gereken içerik scriptlerini çalıştırmak.
+              Shorts sayfalarında otomatik geçişi sağlamak, normal video sayfalarında pop-out
+              butonunu göstermek ve video/Shorts sayfalarında dislike sayısını göstermek için
+              gereken içerik scriptlerini çalıştırmak.
             </td>
           </tr>
           <tr>

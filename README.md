@@ -36,15 +36,19 @@ A small set of tweaks that make your social media experience better — in a sin
 
 <table>
   <tr>
-    <td width="33%" valign="top">
+    <td width="25%" valign="top">
       <h3>▶️ Auto-advance on Shorts</h3>
       One YouTube Short ends, the next begins. Watch without lifting a finger.
     </td>
-    <td width="33%" valign="top">
+    <td width="25%" valign="top">
       <h3>👎 Dislikes are back</h3>
       YouTube hid the count, we brought it back. See the dislike number again.
     </td>
-    <td width="33%" valign="top">
+    <td width="25%" valign="top">
+      <h3>🪟 Video pop-out</h3>
+      Move a regular YouTube video into Chrome's native Picture-in-Picture window.
+    </td>
+    <td width="25%" valign="top">
       <h3>📸 Auto-advance on Reels</h3>
       Instagram Reels deserve the same comfort. The feed never stops.
     </td>
@@ -78,6 +82,13 @@ a label next to the dislike button; video changes are caught via the
 `yt-navigate-finish` event. The count comes from
 [returnyoutubedislike.com](https://returnyoutubedislike.com)
 (see [Anarios/return-youtube-dislike](https://github.com/Anarios/return-youtube-dislike)).
+
+### 🪟 YouTube — Video pop-out
+[`src/youtube-popout.ts`](src/youtube-popout.ts) loads on `https://www.youtube.com/*`
+so it survives YouTube's SPA navigation, but it only renders a button when
+`location.pathname === "/watch"`. The button uses the native
+`requestPictureInPicture()` API on the current YouTube `<video>` element after
+checking browser support, video readiness and whether PiP is disabled for that video.
 
 ### 📸 Instagram Reels — Auto-advance
 [`src/instagram.ts`](src/instagram.ts) follows the same logic as YouTube Shorts: it
@@ -129,6 +140,7 @@ src/
 ├── content.ts         # Shorts auto-advance logic
 ├── instagram.ts       # Instagram Reels auto-advance logic
 ├── dislikes.ts        # Dislike count display (content script)
+├── youtube-popout.ts  # YouTube Picture-in-Picture button (content script)
 ├── background.ts      # Service worker that makes dislike API requests
 ├── messages.ts        # content <-> background message types
 ├── settings.ts        # Settings type + storage helpers
@@ -144,16 +156,17 @@ language automatically from the browser's UI language (English is the fallback).
 ## 🔒 Privacy
 
 This extension sends no data to its own servers and contains no analytics or tracking.
-Your settings (`enabled`, `showDislikes`, `instagramEnabled`) are stored only in the
-browser's `chrome.storage.sync` area.
+Your settings (`enabled`, `showDislikes`, `youtubePopoutButtonEnabled`,
+`instagramEnabled`) are stored only in the browser's `chrome.storage.sync` area.
 
 **When** the "Show dislike count" feature is on, the ID of the video you're watching is
 sent to [returnyoutubedislikeapi.com](https://returnyoutubedislikeapi.com) to fetch the
 dislike count (a third-party service). Turn that feature off in the popup and no
 requests are made.
 
-The extension only runs on `https://www.youtube.com/shorts/*`,
-`https://www.youtube.com/watch*` and `https://www.instagram.com/reel(s)/*` pages.
+The extension runs on `https://www.youtube.com/*` for YouTube SPA compatibility and on
+`https://www.instagram.com/reel(s)/*` pages. The pop-out button only appears on
+regular YouTube watch pages.
 
 Full text: [socialtweaks.online/privacy.html](https://socialtweaks.online/privacy.html)
 

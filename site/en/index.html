@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Social Tweaks — Auto-scroll Shorts & Reels, get dislikes back</title>
+    <title>Social Tweaks — Auto-scroll Shorts & Reels, pop out YouTube videos</title>
     <meta
       name="description"
-      content="Watch YouTube Shorts and Instagram Reels hands-free with auto-scroll, and bring back the dislike counts YouTube hid. A lightweight, open-source Chrome extension that collects no data."
+      content="Watch YouTube Shorts and Instagram Reels hands-free, pop out regular YouTube videos, and bring back the dislike counts YouTube hid. A lightweight, open-source Chrome extension."
     />
     <link rel="canonical" href="https://socialtweaks.online/en/" />
     <link rel="alternate" hreflang="tr" href="https://socialtweaks.online/" />
@@ -20,10 +20,10 @@
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Social Tweaks" />
     <meta property="og:url" content="https://socialtweaks.online/en/" />
-    <meta property="og:title" content="Social Tweaks — Auto-scroll Shorts & Reels, get dislikes back" />
+    <meta property="og:title" content="Social Tweaks — Auto-scroll Shorts & Reels, pop out YouTube videos" />
     <meta
       property="og:description"
-      content="Auto-advance YouTube Shorts and Instagram Reels when they end, and restore the dislike counts YouTube hid. Open-source, lightweight, no data collection."
+      content="Auto-advance Shorts/Reels, pop out regular YouTube videos, and restore the dislike counts YouTube hid. Open-source, lightweight Chrome extension."
     />
     <meta property="og:image" content="https://socialtweaks.online/assets/og-en.png" />
     <meta property="og:image:width" content="1200" />
@@ -32,10 +32,10 @@
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Social Tweaks — Auto-scroll Shorts & Reels, get dislikes back" />
+    <meta name="twitter:title" content="Social Tweaks — Auto-scroll Shorts & Reels, pop out YouTube videos" />
     <meta
       name="twitter:description"
-      content="Auto-advance YouTube Shorts & Instagram Reels + bring dislike counts back. Open-source, no tracking."
+      content="Auto-advance Shorts/Reels, pop out YouTube videos, and bring dislike counts back. Open-source, lightweight Chrome extension."
     />
     <meta name="twitter:image" content="https://socialtweaks.online/assets/og-en.png" />
 
@@ -47,9 +47,9 @@
         "name": "Social Tweaks",
         "applicationCategory": "BrowserApplication",
         "operatingSystem": "Chrome",
-        "description": "Open-source Chrome extension that auto-advances YouTube Shorts and Instagram Reels when they end and restores the dislike counts YouTube hid.",
+        "description": "Open-source Chrome extension that auto-advances YouTube Shorts and Instagram Reels when they end, pops out regular YouTube videos, and restores the dislike counts YouTube hid.",
         "url": "https://socialtweaks.online/en/",
-        "softwareVersion": "1.0.0",
+        "softwareVersion": "1.2.0",
         "license": "https://opensource.org/licenses/MIT",
         "isAccessibleForFree": true,
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -75,6 +75,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Yes. Social Tweaks uses Return YouTube Dislike data to show the dislike counts YouTube hid in 2021, on both video and Shorts pages. Just enable \"Show dislike count\" in the popup."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I watch a YouTube video in a pop-out window?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Social Tweaks adds a pop-out button to regular YouTube watch pages. Hover the player to reveal it, then click it to move the current video into Chrome's native Picture-in-Picture window."
             }
           },
           {
@@ -237,7 +245,7 @@
       .sec-tag { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
       .sec-head h2 { font-size: clamp(28px, 3.6vw, 40px); font-weight: 850; letter-spacing: -0.03em; line-height: 1.1; margin: 0 0 14px; }
       .sec-head p { color: var(--muted); font-size: 17px; margin: 0; }
-      .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      .features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
       .fcard {
         position: relative; background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
         border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 26px 30px; overflow: hidden;
@@ -251,9 +259,11 @@
       .ficon { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 13px; margin-bottom: 20px; }
       .ficon.yt { background: rgba(255, 59, 59, 0.14); border: 1px solid rgba(255, 59, 59, 0.28); }
       .ficon.ig { background: rgba(224, 57, 94, 0.13); border: 1px solid rgba(224, 57, 94, 0.28); }
+      .ficon.popout { background: rgba(58, 168, 224, 0.14); border: 1px solid rgba(58, 168, 224, 0.28); }
       .ficon svg { width: 24px; height: 24px; }
       .ficon.yt svg { color: var(--yt); }
       .ficon.ig svg { color: #f06292; }
+      .ficon.popout svg { color: var(--brand-from); }
       .fcard h3 { font-size: 19px; font-weight: 750; letter-spacing: -0.015em; margin: 0 0 10px; }
       .fcard p { color: var(--muted); font-size: 15px; margin: 0; }
       .steps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
@@ -332,7 +342,8 @@
         <h1>Stop scrolling,<br /><span class="gradient-text">keep watching.</span></h1>
         <p class="lead">
           Social Tweaks auto-advances YouTube Shorts and Instagram Reels the moment they end.
-          It also brings back the dislike counts YouTube hid. All in one lightweight extension.
+          It also pops out regular YouTube videos and brings back the dislike counts YouTube hid.
+          All in one lightweight extension.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/efcmpoackpiboanhogobadabplpobkjj">
@@ -386,6 +397,10 @@
               <span>Show dislike count</span>
               <span class="toggle on"></span>
             </div>
+            <div class="prow">
+              <span>Video pop-out button</span>
+              <span class="toggle on"></span>
+            </div>
           </div>
           <div class="pcard">
             <div class="pcard-title">
@@ -425,6 +440,13 @@
             </span>
             <h3>Dislikes are back</h3>
             <p>YouTube hid the dislike count, so we brought it back. See how a video really landed.</p>
+          </article>
+          <article class="fcard reveal" style="--accent: linear-gradient(90deg, #3aa8e0, #6a4fe8)">
+            <span class="ficon popout">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 5.5A2.5 2.5 0 016.5 3h11A2.5 2.5 0 0120 5.5v13a2.5 2.5 0 01-2.5 2.5h-11A2.5 2.5 0 014 18.5v-13zm2 0v13c0 .28.22.5.5.5h11a.5.5 0 00.5-.5v-13a.5.5 0 00-.5-.5h-11a.5.5 0 00-.5.5zm5 4.5h5v4h-5v-4z"/></svg>
+            </span>
+            <h3>Video pop-out</h3>
+            <p>Hover the YouTube player and move the current video into Chrome's native Picture-in-Picture window.</p>
           </article>
           <article class="fcard reveal" style="--accent: linear-gradient(90deg, #f5a623, #e0395e 55%, #8134af)">
             <span class="ficon ig">
@@ -492,6 +514,10 @@
             <p>Yes. Social Tweaks uses Return YouTube Dislike data to show the dislike counts YouTube hid in 2021, on both video and Shorts pages. Just enable "Show dislike count" in the popup.</p>
           </details>
           <details>
+            <summary>Can I watch YouTube in a pop-out window?</summary>
+            <p>Yes. On regular YouTube watch pages, hover the video player and click the pop-out button. The current video moves into Chrome's native Picture-in-Picture window.</p>
+          </details>
+          <details>
             <summary>Does Instagram Reels support auto-scroll?</summary>
             <p>With Social Tweaks enabled, the next Reel plays automatically when one ends, so your feed never stops. You can toggle this independently in the popup.</p>
           </details>
@@ -516,9 +542,9 @@
           </span>
           <h2>Your data stays with you</h2>
           <p>
-            Social Tweaks sends no data to any server; there's no analytics or tracking.
-            Your settings live only in your browser's own storage. Only when "Show dislike count"
-            is on, the ID of the video you're watching is sent to
+            The Social Tweaks extension sends no data to its own server; the extension contains
+            no analytics or tracking. Your settings live only in your browser's own storage.
+            Only when "Show dislike count" is on, the ID of the video you're watching is sent to
             <a href="https://returnyoutubedislikeapi.com">returnyoutubedislikeapi.com</a> to fetch
             the count — turn that feature off and no requests are made.
           </p>

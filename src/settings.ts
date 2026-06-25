@@ -3,6 +3,8 @@ export interface Settings {
   enabled: boolean;
   /** Video sayfalarında gizlenen dislike sayısı gösterilsin mi? */
   showDislikes: boolean;
+  /** YouTube video sayfalarında pop-out butonu gösterilsin mi? */
+  youtubePopoutButtonEnabled: boolean;
   /** Instagram Reels'te otomatik geçiş açık mı? */
   instagramEnabled: boolean;
 }
@@ -10,6 +12,7 @@ export interface Settings {
 export const DEFAULT_SETTINGS: Settings = {
   enabled: true,
   showDislikes: true,
+  youtubePopoutButtonEnabled: true,
   instagramEnabled: true,
 };
 

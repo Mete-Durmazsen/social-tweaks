@@ -7,7 +7,7 @@ Bu dosya, Web Store Developer Dashboard'a girilecek metinleri tutar (TR + EN).
 | Alan | Kaynak | Not |
 |---|---|---|
 | **Başlık** (45) | Paket → `manifest.name` | "Social Tweaks" (iki dilde aynı). Otomatik gelir, dashboard'da düzenlenmez. |
-| **Kısa özet** (132) | Paket → `manifest.description` (i18n) | v1.1.0 yüklenince dile göre otomatik: TR `_locales/tr`, EN `_locales/en`. |
+| **Kısa özet** (132) | Paket → `manifest.description` (i18n) | v1.2.0 yüklenince dile göre otomatik: TR `_locales/tr`, EN `_locales/en`. |
 | **Açıklama** (16.000) | Dashboard → Mağaza girişi → dil seç → elle yapıştır | Aşağıdaki uzun metinler. **Her dil için ayrı girilir.** |
 | **Ekran görüntüleri / promo** | Dashboard → Grafik öğeler | TR: `store-assets/`, EN: `store-assets/en/` |
 
@@ -22,8 +22,8 @@ düşmek demek. Daha uygun seçenek: **Araçlar (Tools)** veya **Sadece Eğlence
 
 **Başlık:** Social Tweaks
 
-**Kısa özet (121/132):**
-> Sosyal medya için küçük iyileştirmeler: YouTube Shorts ve Instagram Reels bittiğinde otomatik olarak bir sonrakine geçer.
+**Kısa özet (116/132):**
+> Sosyal medya için küçük iyileştirmeler: Shorts/Reels otomatik geçiş, YouTube dislike sayısı ve video pop-out butonu.
 
 **Açıklama:**
 
@@ -32,6 +32,7 @@ Social Tweaks, sosyal medya deneyimini iyileştiren küçük ama işe yarar ayar
 
 • YouTube Shorts — Otomatik geçiş: Bir Short bitince otomatik olarak sıradakine geçer; durmadan, elini sürmeden izlersin.
 • YouTube — Dislike sayısı: YouTube'un arayüzden kaldırdığı beğenmeme (dislike) sayılarını video ve Shorts sayfalarında geri getirir.
+• YouTube — Video pop-out: Normal YouTube videosunu hover'da görünen butonla Chrome'un Picture-in-Picture penceresine taşırsın.
 • Instagram Reels — Otomatik geçiş: Bir Reel bitince sıradaki kendiliğinden gelir, akış hiç durmaz.
 
 Her özelliği eklenti penceresinden ayrı ayrı açıp kapatabilirsin. Ücretsiz, reklamsız ve hesap gerektirmez.
@@ -43,7 +44,7 @@ Eklenti yalnızca YouTube (youtube.com) ve Instagram (instagram.com) sayfaların
 Açık kaynak: https://github.com/Mete-Durmazsen/social-tweaks
 ```
 
-**Önceki metne göre eklenenler:** dislike'ın Shorts'ta da çalıştığı · ücretsiz/reklamsız/hesapsız · hangi sitelerde çalıştığı · "dislike kapalıyken istek yok" netliği.
+**Önceki metne göre eklenenler:** video pop-out · dislike'ın Shorts'ta da çalıştığı · ücretsiz/reklamsız/hesapsız · hangi sitelerde çalıştığı · "dislike kapalıyken istek yok" netliği.
 
 ---
 
@@ -51,8 +52,8 @@ Açık kaynak: https://github.com/Mete-Durmazsen/social-tweaks
 
 **Title:** Social Tweaks
 
-**Short summary (107/132):**
-> Small improvements for social media: auto-advances to the next when YouTube Shorts and Instagram Reels end.
+**Short summary (115/132):**
+> Small improvements for social media: Shorts/Reels auto-advance, YouTube dislike counts, and a video pop-out button.
 
 **Description:**
 
@@ -61,6 +62,7 @@ Social Tweaks offers small but genuinely useful tweaks that improve your social 
 
 • YouTube Shorts — Auto-advance: When a Short ends, it automatically moves to the next one, so you can keep watching hands-free.
 • YouTube — Dislike count: Brings back the dislike counts YouTube removed from the interface, on both video and Shorts pages.
+• YouTube — Video pop-out: Move a regular YouTube video into Chrome's native Picture-in-Picture window with a hover-only button.
 • Instagram Reels — Auto-advance: When a Reel ends, the next one plays on its own and the feed never stops.
 
 You can toggle each feature on or off independently from the extension popup. It's free, ad-free, and needs no account.

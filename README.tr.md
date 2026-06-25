@@ -36,15 +36,19 @@ Sosyal medya deneyimini iyileştiren küçük ayarlar bütünü — tek bir Chro
 
 <table>
   <tr>
-    <td width="33%" valign="top">
+    <td width="25%" valign="top">
       <h3>▶️ Shorts otomatik geçiş</h3>
       Bir YouTube Short biter, diğeri başlar. Parmağını kıpırdatmadan izle.
     </td>
-    <td width="33%" valign="top">
+    <td width="25%" valign="top">
       <h3>👎 Dislike'lar geri döndü</h3>
       YouTube sakladı, biz geri getirdik. Dislike sayısını tekrar gör.
     </td>
-    <td width="33%" valign="top">
+    <td width="25%" valign="top">
+      <h3>🪟 Video pop-out</h3>
+      Normal YouTube videosunu Chrome'un native Picture-in-Picture penceresine taşı.
+    </td>
+    <td width="25%" valign="top">
       <h3>📸 Reels otomatik geçiş</h3>
       Instagram Reels de aynı konforu hak eder. Akış hiç durmaz.
     </td>
@@ -81,6 +85,14 @@ sayfanın CSP'si nedeniyle dış API'ye `fetch` güvenilir değildir). Sonuç, d
 butonunun yanına bir etiket olarak eklenir; video değişimleri `yt-navigate-finish`
 olayıyla yakalanır. Sayı, [returnyoutubedislike.com](https://returnyoutubedislike.com)
 servisinden alınır (bkz. [Anarios/return-youtube-dislike](https://github.com/Anarios/return-youtube-dislike)).
+
+### 🪟 YouTube — Video pop-out
+[`src/youtube-popout.ts`](src/youtube-popout.ts), YouTube SPA geçişlerinde çalışmaya
+devam etmek için `https://www.youtube.com/*` üzerinde yüklenir; ancak butonu yalnızca
+`location.pathname === "/watch"` olduğunda render eder. Buton, mevcut YouTube
+`<video>` öğesi üzerinde native `requestPictureInPicture()` API'sini kullanır ve
+öncesinde tarayıcı desteğini, video hazır durumunu ve video için PiP'in kapalı olup
+olmadığını kontrol eder.
 
 ### 📸 Instagram Reels — Otomatik geçiş
 [`src/instagram.ts`](src/instagram.ts), YouTube Shorts ile aynı mantığı izler:
@@ -132,6 +144,7 @@ src/
 ├── content.ts         # Shorts otomatik geçiş mantığı
 ├── instagram.ts       # Instagram Reels otomatik geçiş mantığı
 ├── dislikes.ts        # Dislike sayısı gösterimi (content script)
+├── youtube-popout.ts  # YouTube Picture-in-Picture butonu (content script)
 ├── background.ts      # Dislike API isteklerini yapan service worker
 ├── messages.ts        # content <-> background mesaj tipleri
 ├── settings.ts        # Ayar tipi + storage yardımcıları
@@ -147,16 +160,17 @@ tarayıcının arayüz diline göre otomatik seçer (yedek dil İngilizce'dir).
 ## 🔒 Gizlilik
 
 Bu eklenti kendi sunucularına hiçbir veri göndermez, analitik/izleme içermez.
-Ayarların (`enabled`, `showDislikes`, `instagramEnabled`) tek saklandığı yer
-tarayıcının `chrome.storage.sync` alanıdır.
+Ayarların (`enabled`, `showDislikes`, `youtubePopoutButtonEnabled`,
+`instagramEnabled`) tek saklandığı yer tarayıcının `chrome.storage.sync` alanıdır.
 
 "Dislike sayısını göster" özelliği **açıkken**, izlediğin videonun ID'si dislike
 sayısını almak için [returnyoutubedislikeapi.com](https://returnyoutubedislikeapi.com)'a
 gönderilir (üçüncü taraf bir servistir). Bu özelliği popup'tan kapatırsan hiçbir
 istek yapılmaz.
 
-Eklenti yalnızca `https://www.youtube.com/shorts/*`, `https://www.youtube.com/watch*`
-ve `https://www.instagram.com/reel(s)/*` sayfalarında çalışır.
+Eklenti YouTube SPA uyumluluğu için `https://www.youtube.com/*` üzerinde ve
+`https://www.instagram.com/reel(s)/*` sayfalarında çalışır. Pop-out butonu yalnızca
+normal YouTube video sayfalarında görünür.
 
 Tam metin: [socialtweaks.online/privacy.html](https://socialtweaks.online/privacy.html)
 

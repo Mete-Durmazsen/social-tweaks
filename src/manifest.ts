@@ -5,7 +5,7 @@ export default defineManifest({
   name: 'Social Tweaks',
   description: '__MSG_appDesc__',
   default_locale: 'en',
-  version: '1.1.0',
+  version: '1.2.0',
   permissions: ['storage'],
   host_permissions: ['https://www.youtube.com/*', 'https://returnyoutubedislikeapi.com/*'],
   background: {
@@ -27,6 +27,11 @@ export default defineManifest({
     '128': 'src/icons/icon128.png',
   },
   content_scripts: [
+    {
+      matches: ['https://www.youtube.com/*'],
+      js: ['src/youtube-popout.ts'],
+      run_at: 'document_idle',
+    },
     {
       matches: ['https://www.youtube.com/shorts/*'],
       js: ['src/content.ts'],

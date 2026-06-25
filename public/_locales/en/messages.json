@@ -1,12 +1,15 @@
 {
   "appDesc": {
-    "message": "Small improvements for social media: auto-advances to the next when YouTube Shorts and Instagram Reels end."
+    "message": "Small improvements for social media: Shorts/Reels auto-advance, YouTube dislike counts, and a video pop-out button."
   },
   "ytAutoAdvance": {
     "message": "Auto-advance on Shorts"
   },
   "showDislikes": {
     "message": "Show dislike count"
+  },
+  "youtubePopoutButton": {
+    "message": "Video pop-out button"
   },
   "igAutoAdvance": {
     "message": "Auto-advance on Reels"

@@ -1,12 +1,15 @@
 {
   "appDesc": {
-    "message": "Sosyal medya için küçük iyileştirmeler: YouTube Shorts ve Instagram Reels bittiğinde otomatik olarak bir sonrakine geçer."
+    "message": "Sosyal medya için küçük iyileştirmeler: Shorts/Reels otomatik geçiş, YouTube dislike sayısı ve video pop-out butonu."
   },
   "ytAutoAdvance": {
     "message": "Shorts'ta otomatik geçiş"
   },
   "showDislikes": {
     "message": "Dislike sayısını göster"
+  },
+  "youtubePopoutButton": {
+    "message": "Video pop-out butonu"
   },
   "igAutoAdvance": {
     "message": "Reels'te otomatik geçiş"
