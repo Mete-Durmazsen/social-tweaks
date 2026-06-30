@@ -7,7 +7,7 @@ Bu dosya, Web Store Developer Dashboard'a girilecek metinleri tutar (TR + EN).
 | Alan | Kaynak | Not |
 |---|---|---|
 | **Başlık** (45) | Paket → `manifest.name` | "Social Tweaks" (iki dilde aynı). Otomatik gelir, dashboard'da düzenlenmez. |
-| **Kısa özet** (132) | Paket → `manifest.description` (i18n) | v1.2.0 yüklenince dile göre otomatik: TR `_locales/tr`, EN `_locales/en`. |
+| **Kısa özet** (132) | Paket → `manifest.description` (i18n) | v1.2.1 yüklenince dile göre otomatik: TR `_locales/tr`, EN `_locales/en`. |
 | **Açıklama** (16.000) | Dashboard → Mağaza girişi → dil seç → elle yapıştır | Aşağıdaki uzun metinler. **Her dil için ayrı girilir.** |
 | **Ekran görüntüleri / promo** | Dashboard → Grafik öğeler | TR: `store-assets/`, EN: `store-assets/en/` |
 

@@ -41,6 +41,10 @@ const handledVideos = new WeakSet<HTMLVideoElement>();
 
 // --- Geçiş mantığı --------------------------------------------------------
 
+function isShortsPage(): boolean {
+  return location.pathname.startsWith('/shorts/');
+}
+
 function goToNextShort(): void {
   // 1) Tercih edilen yöntem: ArrowDown klavye olayı.
   const dispatchArrowDown = (type: 'keydown' | 'keyup') => {
@@ -69,7 +73,7 @@ function goToNextShort(): void {
 
 /** Geçişi tetikler; kilitliyse yok sayar. */
 function requestAdvance(): void {
-  if (!settings.enabled) return;
+  if (!settings.enabled || !isShortsPage()) return;
 
   const now = Date.now();
   if (now - lastAdvanceAt < ADVANCE_LOCK_MS) return;
@@ -123,7 +127,7 @@ function attachToVideo(video: HTMLVideoElement): void {
 
 /** Periyodik denetleyici: aktif video'ya handler'ların bağlı olmasını sağlar. */
 function tick(): void {
-  if (!settings.enabled) return;
+  if (!settings.enabled || !isShortsPage()) return;
   const video = findActiveVideo();
   if (video) {
     // YouTube loop'u yeniden açabilir; her turda tekrar kapat.

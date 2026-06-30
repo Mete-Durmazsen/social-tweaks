@@ -8,7 +8,7 @@ alınabilir. Tahmini iş yükü etiketleri: `S` (küçük), `M` (orta), `L` (bü
 
 ## 1. Yayın & Mağaza (Chrome Web Store)
 
-- [ ] **Chrome Web Store'a yükleme** `M` — güncel `social-tweaks-v1.2.0.zip` paketini
+- [ ] **Chrome Web Store'a yükleme** `M` — güncel `social-tweaks-v1.2.1.zip` paketini
       [Developer Dashboard](https://chrome.google.com/webstore/devconsole)
       üzerinden gönder. Tek seferlik **5 USD** geliştirici kaydı gerekir.
 - [ ] **Mağaza listing içeriği** `S` — `store-assets/` içindeki görselleri

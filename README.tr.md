@@ -168,9 +168,9 @@ sayısını almak için [returnyoutubedislikeapi.com](https://returnyoutubedisli
 gönderilir (üçüncü taraf bir servistir). Bu özelliği popup'tan kapatırsan hiçbir
 istek yapılmaz.
 
-Eklenti YouTube SPA uyumluluğu için `https://www.youtube.com/*` üzerinde ve
-`https://www.instagram.com/reel(s)/*` sayfalarında çalışır. Pop-out butonu yalnızca
-normal YouTube video sayfalarında görünür.
+Eklenti, SPA uyumluluğu için içerik scriptlerini `https://www.youtube.com/*` ve
+`https://www.instagram.com/*` üzerinde yükler. Her özellik yalnızca ilgili normal
+video, Shorts veya Reels sayfasında etkinleşir.
 
 Tam metin: [socialtweaks.online/privacy.html](https://socialtweaks.online/privacy.html)
 

@@ -5,7 +5,7 @@ export default defineManifest({
   name: 'Social Tweaks',
   description: '__MSG_appDesc__',
   default_locale: 'en',
-  version: '1.2.0',
+  version: '1.2.1',
   permissions: ['storage'],
   host_permissions: ['https://www.youtube.com/*', 'https://returnyoutubedislikeapi.com/*'],
   background: {
@@ -33,17 +33,17 @@ export default defineManifest({
       run_at: 'document_idle',
     },
     {
-      matches: ['https://www.youtube.com/shorts/*'],
+      matches: ['https://www.youtube.com/*'],
       js: ['src/content.ts'],
       run_at: 'document_idle',
     },
     {
-      matches: ['https://www.youtube.com/watch*', 'https://www.youtube.com/shorts/*'],
+      matches: ['https://www.youtube.com/*'],
       js: ['src/dislikes.ts'],
       run_at: 'document_idle',
     },
     {
-      matches: ['https://www.instagram.com/reels/*', 'https://www.instagram.com/reel/*'],
+      matches: ['https://www.instagram.com/*'],
       js: ['src/instagram.ts'],
       run_at: 'document_idle',
     },

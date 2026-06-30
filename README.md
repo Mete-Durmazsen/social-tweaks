@@ -164,9 +164,9 @@ sent to [returnyoutubedislikeapi.com](https://returnyoutubedislikeapi.com) to fe
 dislike count (a third-party service). Turn that feature off in the popup and no
 requests are made.
 
-The extension runs on `https://www.youtube.com/*` for YouTube SPA compatibility and on
-`https://www.instagram.com/reel(s)/*` pages. The pop-out button only appears on
-regular YouTube watch pages.
+The extension loads its content scripts on `https://www.youtube.com/*` and
+`https://www.instagram.com/*` for SPA compatibility. Each feature activates only on
+its relevant watch, Shorts, or Reels page.
 
 Full text: [socialtweaks.online/privacy.html](https://socialtweaks.online/privacy.html)
 

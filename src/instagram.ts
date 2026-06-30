@@ -31,6 +31,14 @@ const handledVideos = new WeakSet<HTMLVideoElement>();
 
 // --- Video tespiti ----------------------------------------------------------
 
+function isReelsPage(): boolean {
+  return (
+    location.pathname === '/reels' ||
+    location.pathname.startsWith('/reels/') ||
+    location.pathname.startsWith('/reel/')
+  );
+}
+
 /** Elemanın görünür alanın yarısından fazlasının ekranda olup olmadığı. */
 function isMostlyInViewport(el: Element): boolean {
   const rect = el.getBoundingClientRect();
@@ -82,7 +90,7 @@ function goToNextReel(video: HTMLVideoElement): void {
 
 /** Geçişi tetikler; kilitliyse yok sayar. */
 function requestAdvance(video: HTMLVideoElement): void {
-  if (!settings.instagramEnabled) return;
+  if (!settings.instagramEnabled || !isReelsPage()) return;
 
   const now = Date.now();
   if (now - lastAdvanceAt < ADVANCE_LOCK_MS) return;
@@ -117,7 +125,7 @@ function attachToVideo(video: HTMLVideoElement): void {
 
 /** Periyodik denetleyici: aktif video'ya handler'ların bağlı olmasını sağlar. */
 function tick(): void {
-  if (!settings.instagramEnabled) return;
+  if (!settings.instagramEnabled || !isReelsPage()) return;
   const video = findActiveVideo();
   if (video) {
     // Instagram loop'u yeniden açabilir; her turda tekrar kapat.
